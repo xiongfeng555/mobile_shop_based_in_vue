@@ -12,6 +12,11 @@ vue
 
 webpack
 
+## ui 框架
+
+1.mint-ui
+2.mui
+
 ## 运行方法
 
 1.npm install
