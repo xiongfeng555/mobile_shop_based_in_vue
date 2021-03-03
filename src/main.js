@@ -27,9 +27,14 @@ Vue.use(MintUI);
 // 1. 导入 login 组件
 import app from './App.vue'
 import './lib/mui/css/mui.css';
-// 默认，webpack 无法打包 .vue 文件，需要安装 相关的loader： 
-//  cnpm i vue-loader vue-template-compiler -D
-//  在配置文件中，新增loader哦配置项 { test:/\.vue$/, use: 'vue-loader' }
+import './lib/mui/css/icons-extra.css';
+import router from '../router.js'
+
+import VueResource from 'vue-resource';
+Vue.use(VueResource)
+    // 默认，webpack 无法打包 .vue 文件，需要安装 相关的loader： 
+    //  cnpm i vue-loader vue-template-compiler -D
+    //  在配置文件中，新增loader哦配置项 { test:/\.vue$/, use: 'vue-loader' }
 
 var vm = new Vue({
     el: '#app',
@@ -43,7 +48,8 @@ var vm = new Vue({
       return createElements(login)
     } */
 
-    render: c => c(app)
+    render: c => c(app),
+    router: router
 })
 
 
