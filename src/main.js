@@ -12,6 +12,9 @@ import Vue from 'vue';
 import MintUI from 'mint-ui';
 import 'mint-ui/lib/style.css';
 Vue.use(MintUI);
+
+import axios from 'axios'
+
 // import Vue from '../node_modules/vue/dist/vue.js'
 // 回顾 包的查找规则：
 // 1. 找 项目根目录中有没有 node_modules 的文件夹
@@ -35,6 +38,10 @@ Vue.use(VueResource)
     // 默认，webpack 无法打包 .vue 文件，需要安装 相关的loader： 
     //  cnpm i vue-loader vue-template-compiler -D
     //  在配置文件中，新增loader哦配置项 { test:/\.vue$/, use: 'vue-loader' }
+import moment from 'moment'
+Vue.filter("dataFormat", function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
+    return moment(dataStr).format(pattern)
+})
 
 var vm = new Vue({
     el: '#app',
@@ -49,7 +56,8 @@ var vm = new Vue({
     } */
 
     render: c => c(app),
-    router: router
+    router: router,
+    axios: axios
 })
 
 

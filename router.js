@@ -5,6 +5,9 @@ import home from './src/components/home.vue';
 import member from './src/components/member.vue';
 import search from './src/components/search.vue';
 import shopcar from './src/components/shopcar.vue';
+import newslist from './src/components/news/NewsList.vue';
+import newsinfo from './src/components/news/NewsInfo.vue';
+import photoList from './src/components/photo/PhotoList.vue'
 var router = new VueRouter({
     routes: [{
         path: '/',
@@ -21,6 +24,15 @@ var router = new VueRouter({
     }, {
         path: "/shopcar",
         component: shopcar
+    }, {
+        path: "/home/newslist",
+        component: newslist
+    }, {
+        path: "/home/newsinfo/:id",
+        component: newsinfo
+    }, {
+        path: "/home/photolist",
+        component: photoList
     }],
     linkActiveClass: 'mui-active' //默认路由高亮类
 })
