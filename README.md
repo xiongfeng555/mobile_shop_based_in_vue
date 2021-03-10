@@ -1,11 +1,6 @@
 # 这是一个移动商城项目
 
 ##这里我没有接口，模拟数据在 data.json 里面
-效果图：
-![image-20210310190229697](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210310190229697.png)
-![image-20210310190254949](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210310190254949.png)
-![image-20210310190316802](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210310190316802.png)
-![image-20210310190345342](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210310190345342.png)
 
 ## 开发工具
 
@@ -43,5 +38,3 @@ webpack
 
 原因：（是 chrome 为了提高页面的滑动流畅度而新折腾出来的一个东西） http://www.cnblogs.com/pearl07/p/6589114.html
 https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action
-
-
