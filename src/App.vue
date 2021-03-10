@@ -1,7 +1,11 @@
 <template>
   <div class="contain">
     <!-- header 导航栏 -->
-    <mt-header fixed title="基于vue移动商城"></mt-header>
+    <mt-header fixed title="基于vue移动商城">
+      <span slot="left" @click="back" v-show="flag">
+        <mt-button icon="back" class="back">返回</mt-button>
+      </span>
+    </mt-header>
     <!-- 中间部分 -->
     <transition>
       <router-view></router-view>
@@ -18,7 +22,9 @@
       </router-link>
       <router-link class="mui-tab-item1" to="/shopcar">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart"
-          ><span class="mui-badge">0</span></span
+          ><span class="mui-badge" id="badge">{{
+            $store.getters.getAllCounts
+          }}</span></span
         >
         <span class="mui-tab-label">购物车</span>
       </router-link>
@@ -31,7 +37,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      flag: false
+    };
+  },
+  created() {
+    if (this.$route.path === "/home") {
+      this.flag = false;
+    } else {
+      this.flag = true;
+    }
+  },
+  methods: {
+    back() {
+      this.$router.go(-1);
+    }
+  },
+  watch: {
+    "$route.path": function(newVal) {
+      if (newVal === "/home") {
+        this.flag = false;
+      } else {
+        this.flag = true;
+      }
+    }
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -91,5 +124,8 @@ export default {};
 }
 .mui-bar-tab .mui-tab-item1 .mui-icon:active {
   background: none;
+}
+.mint-button-text {
+  font-size: 18px;
 }
 </style>

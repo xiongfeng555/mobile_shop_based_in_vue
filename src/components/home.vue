@@ -22,9 +22,9 @@
         >
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="/home/goodslist">
           <img src="../img/menu3.png" alt="" />
-          <div class="mui-media-body">商品购买</div></a
+          <div class="mui-media-body">商品购买</div></router-link
         >
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">

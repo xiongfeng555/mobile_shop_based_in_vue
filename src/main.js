@@ -9,12 +9,105 @@
 // 在webpack 中尝试使用 Vue：
 // 注意： 在 webpack 中， 使用 import Vue from 'vue' 导入的 Vue 构造函数，功能不完整，只提供了 runtime-only 的方式，并没有提供 像网页中那样的使用方式；
 import Vue from 'vue';
+import Vuex from 'vuex';
 import MintUI from 'mint-ui';
 import 'mint-ui/lib/style.css';
 Vue.use(MintUI);
+Vue.use(Vuex);
+//从本地获取数据，更新car
+var car = JSON.parse(localStorage.getItem('car') || '[]')
+var store = new Vuex.Store({
+    state: {
+        car: car
+    },
+    mutations: {
+        //把商品详情页的数据传到car数组里面
+        addToCar(state, goodinfo) {
+            var flag = false; //默认商品不存在
+            state.car.some(item => {
+                if (item.id === goodinfo.id) {
+                    item.count += goodinfo.count;
+                    flag = true;
+                    return true;
+                }
+            })
+            if (!flag) {
+                state.car.push(goodinfo);
+            }
+            //本地做持久化存储
+            localStorage.setItem('car', JSON.stringify(state.car))
+        },
+        //更新商品数量
+        updateShopCar(state, newInfo) {
+            state.car.forEach(item => {
+                if (item.id === newInfo.id) {
+                    item.count = newInfo.count;
+                    return;
+                }
+            })
+            localStorage.setItem('car', JSON.stringify(state.car));
+        },
+        //从购物车中删除数据
+        removeFromCar(state, id) {
+            state.car.forEach((item, index) => {
+                if (item.id == id) {
+                    state.car.splice(index, 1);
+                    return;
+                }
+            })
+            localStorage.setItem('car', JSON.stringify(state.car));
+        },
+        updateSelected(state, obj) {
+            state.car.forEach(item => {
+                if (item.id == obj.id) {
+                    item.selected = obj.val;
+                    return;
+                }
+            })
+            localStorage.setItem('car', JSON.stringify(state.car))
+        }
 
-import axios from 'axios'
-
+    },
+    getters: {
+        //得到购物车里面商品的数量，更新购物车图标
+        getAllCounts(state) {
+            var count = 0;
+            state.car.forEach(item => {
+                count += item.count
+            })
+            return count;
+        },
+        //获取商品数量，转化为对象形式{id：count}
+        getGoodsCount(state) {
+            var o = {}
+            state.car.forEach(item => {
+                o[item.id] = item.count;
+            })
+            return o;
+        },
+        getSelected(state) {
+            var o = {}
+            state.car.forEach(item => {
+                o[item.id] = item.selected
+            })
+            return o
+        },
+        getSumPrice(state) {
+            var o = {
+                count: 0, //商品件数
+                price: 0 //商品总价
+            }
+            state.car.forEach(item => {
+                if (item.selected) {
+                    o.count += item.count
+                    o.price += item.count * parseInt(item.price)
+                }
+            })
+            return o
+        }
+    }
+})
+Vue.config.devtools = true;
 // import Vue from '../node_modules/vue/dist/vue.js'
 // 回顾 包的查找规则：
 // 1. 找 项目根目录中有没有 node_modules 的文件夹
@@ -28,17 +121,14 @@ import axios from 'axios'
 
 
 // 1. 导入 login 组件
-import app from './App.vue'
+import app from './App.vue';
 import './lib/mui/css/mui.css';
 import './lib/mui/css/icons-extra.css';
-import router from '../router.js'
-
-import VueResource from 'vue-resource';
-Vue.use(VueResource)
-    // 默认，webpack 无法打包 .vue 文件，需要安装 相关的loader： 
-    //  cnpm i vue-loader vue-template-compiler -D
-    //  在配置文件中，新增loader哦配置项 { test:/\.vue$/, use: 'vue-loader' }
-import moment from 'moment'
+import router from '../router.js';
+// 默认，webpack 无法打包 .vue 文件，需要安装 相关的loader： 
+//  cnpm i vue-loader vue-template-compiler -D
+//  在配置文件中，新增loader哦配置项 { test:/\.vue$/, use: 'vue-loader' }
+import moment from 'moment';
 Vue.filter("dataFormat", function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
     return moment(dataStr).format(pattern)
 })
@@ -57,7 +147,7 @@ var vm = new Vue({
 
     render: c => c(app),
     router: router,
-    axios: axios
+    store: store
 })
 
 
