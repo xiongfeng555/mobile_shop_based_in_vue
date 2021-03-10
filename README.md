@@ -22,7 +22,7 @@ webpack
 ## ui 框架
 
 1.mint-ui
-2.mui 3.
+2.mui
 
 ## 运行方法
 
