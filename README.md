@@ -1,12 +1,19 @@
 # 这是一个移动商城项目
 
+##这里我没有接口，模拟数据在 data.json 里面
+效果图：
+![image-20210310190229697](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210310190229697.png)
+![image-20210310190254949](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210310190254949.png)
+![image-20210310190316802](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210310190316802.png)
+![image-20210310190345342](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210310190345342.png)
+
 ## 开发工具
 
 vscode
 
 ## 开发框架
 
-vue
+vue vue-router vuex
 
 ## 打包工具
 
