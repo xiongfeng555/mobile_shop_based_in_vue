@@ -40,6 +40,7 @@ export default {
     getAllGoodsList() {
       axios.get("../../../data.json").then(res => {
         this.goodslist = res.data.goodsList;
+        console.log(this.goodslist);
       });
     },
     getDetail(id) {

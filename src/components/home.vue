@@ -1,11 +1,7 @@
 <template>
   <div>
     <!-- 轮播图区域 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item>1</mt-swipe-item>
-      <mt-swipe-item>2</mt-swipe-item>
-      <mt-swipe-item>3</mt-swipe-item>
-    </mt-swipe>
+    <swiper :imagesList="swiperList"></swiper>
 
     <!-- 导航栏 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -49,12 +45,28 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+import swiper from "../views/swiper/swiper.vue";
 export default {
   data() {
-    return {};
+    return {
+      swiperList: []
+    };
   },
-  created() {},
-  methods: {}
+  created() {
+    this.getSwiperImg();
+  },
+  methods: {
+    getSwiperImg() {
+      axios.get("../../../data.json").then(res => {
+        console.log(res.data.swiperInfo);
+        this.swiperList = res.data.swiperInfo;
+      });
+    }
+  },
+  components: {
+    swiper
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -76,5 +88,9 @@ export default {
 img {
   width: 60px;
   height: 60px;
+}
+.mint-swipe-item img {
+  width: 100%;
+  height: 100%;
 }
 </style>

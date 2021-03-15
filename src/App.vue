@@ -51,13 +51,17 @@ export default {
     }
   },
   methods: {
+    //定义点击返回按钮的功能
     back() {
       this.$router.go(-1);
+      console.log(this.$router);
     }
   },
   watch: {
+    //监听路由路径
     "$route.path": function(newVal) {
       if (newVal === "/home") {
+        //如果是home，则取消返回按钮的显示
         this.flag = false;
       } else {
         this.flag = true;

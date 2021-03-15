@@ -185,6 +185,16 @@
         "oldprice": 1099,
         "title": "小米手机（64G） 双核5G 全网通",
         "remind": 50
-    }]
+    }],
+    "swiperInfo": [
+        { "id": 1, "url": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3381553338,2851907720&fm=26&gp=0.jpg" },
+        { "id": 2, "url": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3564932711,880220730&fm=26&gp=0.jpg" },
+        { "id": 3, "url": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1529777722,1161573978&fm=26&gp=0.jpg" }
+    ],
+    "phoneSwiperInfo": [
+        { "id": 1, "url": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage3.suning.cn%2Fuimg%2Fb2c%2Fnewcatentries%2F0070142956-000000000713063356_1_220x220.jpg%3Fver%3D2019&refer=http%3A%2F%2Fimage3.suning.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617763196&t=ddd8f87d5dce9ed631ce980cb270a11f" },
+        { "id": 2, "url": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage3.suning.cn%2Fuimg%2Fb2c%2Fnewcatentries%2F0070142956-000000000713063356_1_220x220.jpg%3Fver%3D2019&refer=http%3A%2F%2Fimage3.suning.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617763196&t=ddd8f87d5dce9ed631ce980cb270a11f" },
+        { "id": 3, "url": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage3.suning.cn%2Fuimg%2Fb2c%2Fnewcatentries%2F0070142956-000000000713063356_1_220x220.jpg%3Fver%3D2019&refer=http%3A%2F%2Fimage3.suning.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617763196&t=ddd8f87d5dce9ed631ce980cb270a11f" }
+    ]
 
 }

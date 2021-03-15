@@ -57,6 +57,7 @@ var store = new Vuex.Store({
             })
             localStorage.setItem('car', JSON.stringify(state.car));
         },
+        //更新购物车中商品状态
         updateSelected(state, obj) {
             state.car.forEach(item => {
                 if (item.id == obj.id) {
@@ -85,13 +86,15 @@ var store = new Vuex.Store({
             })
             return o;
         },
+        //获取商品状态
         getSelected(state) {
             var o = {}
             state.car.forEach(item => {
-                o[item.id] = item.selected
+                o[item.id] = item.selected;
             })
-            return o
+            return o;
         },
+        //统计购物车中商品数量和价格
         getSumPrice(state) {
             var o = {
                 count: 0, //商品件数
@@ -129,15 +132,14 @@ import router from '../router.js';
 //  cnpm i vue-loader vue-template-compiler -D
 //  在配置文件中，新增loader哦配置项 { test:/\.vue$/, use: 'vue-loader' }
 import moment from 'moment';
+//定义一个全局过滤器，用来格式化时间
 Vue.filter("dataFormat", function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
-    return moment(dataStr).format(pattern)
+    return moment(dataStr).format(pattern);
 })
 
 var vm = new Vue({
     el: '#app',
-    data: {
-        msg: '123'
-    },
+    data: {},
     // components: {
     //   login
     // }

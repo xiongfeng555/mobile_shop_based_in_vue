@@ -16,8 +16,7 @@ import commit from "../../views/commit/commit.vue";
 export default {
   data() {
     return {
-      newsinfo: {},
-      id: this.$route.params.id
+      newsinfo: {}
     };
   },
   created() {
@@ -37,6 +36,16 @@ export default {
   },
   components: {
     commit
+  },
+  props: ["id"],
+  //用于离开页面时判断
+  beforeRouteLeave(to, from, next) {
+    var answer = window.confirm("你确定要离开这个页面吗？");
+    if (answer) {
+      next();
+    } else {
+      next(false);
+    }
   }
 };
 </script>

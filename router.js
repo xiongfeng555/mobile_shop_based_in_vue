@@ -31,7 +31,8 @@ var router = new VueRouter({
         component: newslist
     }, {
         path: "/home/newsinfo/:id",
-        component: newsinfo
+        component: newsinfo,
+        props: true
     }, {
         path: "/home/photolist",
         component: photoList
@@ -43,7 +44,7 @@ var router = new VueRouter({
         component: goodinfo,
         name: "goodinfo"
     }],
-    linkActiveClass: 'mui-active' //默认路由高亮类
-})
+    linkActiveClass: 'mui-active', //默认路由高亮类
+});
 
 export default router;

@@ -8,11 +8,7 @@
       <div class="ball" v-show="ballFlag" ref="ball"></div>
     </transition>
     <!-- 轮播图区域 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item>1</mt-swipe-item>
-      <mt-swipe-item>2</mt-swipe-item>
-      <mt-swipe-item>3</mt-swipe-item>
-    </mt-swipe>
+    <swiper :imagesList="imagesList"></swiper>
     <!-- 商品购买区域 -->
     <div class="mui-card">
       <div class="mui-card-header">商品的名称标题</div>
@@ -56,16 +52,23 @@
 </template>
 <script>
 import numbox from "./goodsinfo_numbox.vue";
+import axios from "axios";
+import swiper from "../../views/swiper/swiper.vue";
 export default {
   data() {
     return {
       ballFlag: false,
       numboxCount: 1, //子组件传过来的购买数量
-      id: this.$route.params.id
+      id: this.$route.params.id,
+      imagesList: []
     };
   },
   components: {
-    numbox
+    numbox,
+    swiper
+  },
+  created() {
+    this.getSwiperInfo();
   },
   methods: {
     //点击加入购物车
@@ -98,6 +101,11 @@ export default {
     },
     getNumboxCount(count) {
       this.numboxCount = count;
+    },
+    getSwiperInfo() {
+      axios.get("../../../data.json").then(res => {
+        this.imagesList = res.data.phoneSwiperInfo;
+      });
     }
   }
 };
